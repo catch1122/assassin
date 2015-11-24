@@ -15,6 +15,8 @@
             android:icon="@android:drawable/ic_menu_send"/>
         <item android:id="@+id/defend_button" android:title="DEFEND YOURSELF"
             android:icon="@android:drawable/ic_menu_send"/>
+        <item android:id="@+id/leave_button" android:title="Surrender"
+            android:icon="@android:drawable/ic_menu_send"/>
     </group>
 
     <item android:title="Current Players" android:id="@+id/players_menu">
