@@ -201,6 +201,20 @@ public class ClientManager{
 
     }
 
+    public boolean isGuest(String displayName) {
+        Firebase childFB = selfFB.child("users").child(displayName).child("isGuest");
+        return childFB.getKey().equalsIgnoreCase("true");
+    }
+//
+//    public Vector<User> getActivePlayers() {
+//        Vector<User> actives = new Vector<User>();
+//
+//        Firebase childFB = selfFB.child("users");
+//
+//        return actives;
+//
+//    }
+
     public double getLongitude(String displayName){
         User u = getUserDB(displayName);
         return u.getLongitude();
