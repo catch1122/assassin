@@ -76,8 +76,8 @@ public class HostActivity extends AppCompatActivity{
     private ClientManager cm;
     private Switch sw;
     private TextView switchStatus;
-    boolean privateGame;
-    String value;
+    private boolean privateGame;
+    private String value, gameValue;
 
     public static int NO_OPTIONS=0;
 
@@ -120,7 +120,11 @@ public class HostActivity extends AppCompatActivity{
                     try {
                         //attemptLogin();
                         createGame();
-                        startActivity(new Intent(HostActivity.this, MapsActivity.class));
+
+                        Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+                        i.putExtra("displayString", value);
+                        i.putExtra("gameName", gameValue);
+                        startActivity(i);
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     } catch (NoSuchAlgorithmException e) {
@@ -246,7 +250,7 @@ public class HostActivity extends AppCompatActivity{
             showProgress(true);
            // mAuthTask = new UserLoginTask(email, SHAHash);
            // mAuthTask.execute((Void) null);
-
+            gameValue = gameName;
             cm.createGame(gameName, 1, privateGame, SHAHash, value);
         }
     }

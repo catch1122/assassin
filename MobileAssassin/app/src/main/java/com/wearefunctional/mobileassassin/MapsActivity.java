@@ -47,6 +47,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
 
+    private String value, gameValue;
+
     //player reference for updating database
     static Player player;
 
@@ -70,6 +72,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentPlayerLongitude = -118.288108;
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mActivityTitle = getTitle().toString();
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("displayString");
+            gameValue = extras.getString("gameName");
+        }
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
