@@ -1,12 +1,8 @@
 package com.wearefunctional.mobileassassin;
 
-import android.location.Location;
-
-import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
 import java.util.Vector;
@@ -145,6 +141,7 @@ public class ClientManager{
         g.setPassword(password);
         Firebase gamesSub = games.child(gameName);
         gamesSub.setValue(g);
+
     }
 
 
@@ -157,6 +154,9 @@ public class ClientManager{
         g.setPassword(password);
         Firebase gamesSub = games.child(gameName);
         gamesSub.setValue(g);
+        gamesSub.child("isPrivate").setValue(isPrivate);
+        gamesSub.child("password").setValue(password);
+        gamesSub.child("hostName").setValue(displayName);
     }
 
     public void clearPlayers(String gameName) {
