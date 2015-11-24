@@ -38,6 +38,9 @@ public class GameLobbyActivity2 extends AppCompatActivity {
         hostB = (Button) findViewById(R.id.button);
         joinB = (Button) findViewById(R.id.button2);
 
+        hostB.setEnabled(false);
+        joinB.setEnabled(false);
+
         listView = (ListView) findViewById(R.id.game_list);
 
         ClientManager cm = new ClientManager("https://mobileassassin.firebaseio.com");
