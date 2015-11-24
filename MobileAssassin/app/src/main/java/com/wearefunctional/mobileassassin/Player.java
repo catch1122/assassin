@@ -18,6 +18,7 @@ public class Player extends User {
     private String displayName;
     private String password;
     private boolean timeStamp;
+    private String gameName;
 
     private double longitude;
     private double latitude;
@@ -28,7 +29,7 @@ public class Player extends User {
     private ClientManager cm;
     private MapsActivity mMapsActivity;
 
-    public Player(Boolean isAlive, String username, String displayName, String password, Context context){
+    public Player(Boolean isAlive, String username, String displayName, String password, String gameName, Context context){
         super();
         mMapsActivity = new MapsActivity();
         Intent i = new Intent(context, MapsActivity.class);
@@ -39,6 +40,7 @@ public class Player extends User {
         this.password = password;
         timeStamp = false;
         this.isAlive = isAlive;
+        this.gameName = gameName;
         //gamesList = new Vector<String>();
         //targetName = null;
 

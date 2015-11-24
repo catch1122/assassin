@@ -12,7 +12,7 @@ public class User /*implements
     private String password;
     private boolean timeStamp;
 
-    private String gameName;
+//    private String gameName;
 
     private double longitude;
     private double latitude;
@@ -44,12 +44,12 @@ public class User /*implements
 //        createLocationRequest();
     }
 
-    public User(String userName, String displayName, String password, String gameName)
+    public User(String userName, String displayName, String password)//, String gameName)
     {
         this.userName = userName;
         this.displayName = displayName;
         this.password = password;
-        this.gameName = gameName;
+//        this.gameName = gameName;
     }
 
     /* accessor methods */
@@ -61,10 +61,10 @@ public class User /*implements
 //        return target;
 //    }
 
-    public void setGameName(String gameName){
-        this.gameName = gameName;
-    }
-    public String getGameName(){ return gameName;}
+//    public void setGameName(String gameName){
+//        this.gameName = gameName;
+//    }
+//    public String getGameName(){ return gameName;}
 
     public String getDisplayName() {
         return displayName;
