@@ -21,6 +21,8 @@
 
     <item android:title="Current Players" android:id="@+id/players_menu">
         <menu>
+            <item android:id="@+id/start_game" android:title="Begin Game"
+                android:icon="@android:drawable/ic_menu_send"/>
             <item android:id="@+id/nav_share" android:icon="@android:drawable/ic_menu_share"
                 android:title="Game 1" />
             <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"

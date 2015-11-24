@@ -22,7 +22,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -123,8 +122,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16.0f));
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         mMap.setMyLocationEnabled(true);
-        targetLoc = mMap.addMarker(new MarkerOptions().position(new LatLng(34.021494,-118.283708))
-                .title("target loc").snippet("snip"));
+//        targetLoc = mMap.addMarker(new MarkerOptions().position(new LatLng(34.021494,-118.283708))
+//                .title("target loc").snippet("snip"));
         System.out.println("creating map");
         mapMade = true;
         System.out.println("Got through map create");
