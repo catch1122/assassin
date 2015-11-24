@@ -31,20 +31,23 @@ public class Player extends User {
 
     public Player(Boolean isAlive, String username, String displayName, String password, String gameName, Context context){
         super();
-        mMapsActivity = new MapsActivity();
-        Intent i = new Intent(context, MapsActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
         this.userName = username;
         this.displayName = displayName;
         this.password = password;
         timeStamp = false;
         this.isAlive = isAlive;
         this.gameName = gameName;
+        mMapsActivity = new MapsActivity();
+        mMapsActivity.setPlayer(this);
+        Intent i = new Intent(context, MapsActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(i);
+
         //gamesList = new Vector<String>();
         //targetName = null;
 
         /*Temporary for testing purposes*/
+        System.out.println("Display Name " +displayName);
         targetName = displayName;
         Firebase selfFB = new Firebase("https://mobileassassin.firebaseio.com");
         Firebase childFB = selfFB.child("users").child(targetName);
@@ -155,15 +158,17 @@ public class Player extends User {
         return cm.getUserDB(playerName).getLatitude();
     }
 
-    public void setPlayerLongitude(){
+    public void setPlayerLongitude(double longitude){
         ClientManager cm = new ClientManager("https://mobileassassin.firebaseio.com");
         //add in the map getter
-        cm.setLongitude(getThisUser().getDisplayName(), mMapsActivity.getCurrentPlayerLatitude());
+        System.out.println("Send Longitude to Firebase "+longitude);
+        cm.setLongitude(getThisUser().getDisplayName(), longitude);
     }
 
-    public void setPlayerLatitude(){
+    public void setPlayerLatitude(double lat){
         ClientManager cm = new ClientManager("https://mobileassassin.firebaseio.com");
-        cm.setLatitude(getThisUser().getDisplayName(), mMapsActivity.getCurrentPlayerLongitude());
+        System.out.println("Send Latitude to Firebase "+lat);
+        cm.setLatitude(getThisUser().getDisplayName(), lat);
     }
     public void setDead(String playerName){
         final ClientManager cm = new ClientManager("https://mobileassassin.firebaseio.com");

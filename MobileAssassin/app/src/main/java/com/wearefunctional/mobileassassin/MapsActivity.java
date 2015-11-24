@@ -26,7 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
-        ConnectionCallbacks, OnConnectionFailedListener, LocationListener {
+        ConnectionCallbacks, OnConnectionFailedListener {
 
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -38,7 +38,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private double currentPlayerLatitude;
     private double currentPlayerLongitude;
     private Marker targetLoc;
-
+    private boolean mapMade;
     private LocationRequest mLocationRequest;
 
     //navi bar
@@ -125,6 +125,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMyLocationEnabled(true);
         targetLoc = mMap.addMarker(new MarkerOptions().position(new LatLng(34.021494,-118.283708))
                 .title("target loc").snippet("snip"));
+        System.out.println("creating map");
+        mapMade = true;
         // mMap.
     }
 
@@ -138,19 +140,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if(player != null){
                 //updates player values
                 System.out.println("Attempting to print on server");
-                player.setPlayerLatitude();
-                player.setPlayerLongitude();
+                currentPlayerLongitude = location.getLongitude();
+                currentPlayerLatitude = location.getLatitude();
+                player.setPlayerLongitude(currentPlayerLongitude);
+                player.setPlayerLatitude(currentPlayerLatitude);
             } else{
                 System.out.println("Player is null");
             }
-            currentPlayerLatitude = location.getLatitude();
-            currentPlayerLongitude = location.getLongitude();
-            currentPlayerLatitude = location.getLatitude();
-            currentPlayerLongitude = location.getLongitude();
             if(mMap != null){
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             }
-            String targerName = player.getTargetName();
+//            String targerName = player.getTargetName();
 
         }
     };
@@ -164,7 +164,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void setTargetLocation(LatLng loc) {
-        if (mMap != null) {
+        if (!mapMade) {
+            System.out.println("map is null");
+        }
+        else if (mapMade) {
             System.out.println("setTarget lat "+loc.latitude);
             System.out.println("setTarget long" + loc.longitude);
                 targetLoc.remove();
@@ -173,16 +176,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onLocationChanged(Location location) {
-        mCurrentLocation = location;
-        System.out.println("AAAAA");
-        System.out.println("Lat: " + location.getLatitude());
-        System.out.println("Long: " + location.getLongitude());
-        currentPlayerLatitude = location.getLatitude();
-        currentPlayerLongitude = location.getLongitude();
-//        mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
-        updateUI();
-    }
+//    public void onLocationChanged(Location location) {
+//        mCurrentLocation = location;
+//        System.out.println("AAAAA");
+//        System.out.println("Lat: " + location.getLatitude());
+//        System.out.println("Long: " + location.getLongitude());
+//        currentPlayerLatitude = location.getLatitude();
+//        currentPlayerLongitude = location.getLongitude();
+//        player.setPlayerLatitude(currentPlayerLatitude);
+//        player.setPlayerLongitude(currentPlayerLongitude);
+////        mLastUpdateTime = DateFormat.getTimeInstance().format(new Date());
+//        updateUI();
+//    }
 
     public void onConnected(Bundle connectionHint) {
         startLocationUpdates();
