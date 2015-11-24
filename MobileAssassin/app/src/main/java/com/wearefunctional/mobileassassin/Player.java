@@ -42,35 +42,36 @@ public class Player extends User {
         Intent i = new Intent(context, MapsActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
+        setTarget("Tommy");
 
         //gamesList = new Vector<String>();
         //targetName = null;
 
         /*Temporary for testing purposes*/
         System.out.println("Display Name " +displayName);
-        targetName = displayName;
-        Firebase selfFB = new Firebase("https://mobileassassin.firebaseio.com");
-        Firebase childFB = selfFB.child("users").child(targetName);
-        childFB.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("in listener");
-                double targetLat = (double) dataSnapshot.child("latitude").getValue();
-                System.out.println("target lat "+targetLat);
-                double targetLong = (double) dataSnapshot.child("longitude").getValue();
-                System.out.println("target long "+targetLong);
-
-                LatLng targetLocation = new LatLng(targetLat, targetLong);
-                System.out.println("about to set location for target ");
-                mMapsActivity.setTargetLocation(targetLocation);
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("The read failed: " + firebaseError.getMessage());
-            }
-        });
+//        targetName = displayName;
+//        Firebase selfFB = new Firebase("https://mobileassassin.firebaseio.com");
+//        Firebase childFB = selfFB.child("users").child(targetName);
+//        childFB.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                System.out.println("in listener");
+//                double targetLat = (double) dataSnapshot.child("latitude").getValue();
+//                System.out.println("target lat "+targetLat);
+//                double targetLong = (double) dataSnapshot.child("longitude").getValue();
+//                System.out.println("target long "+targetLong);
+//
+//                LatLng targetLocation = new LatLng(targetLat, targetLong);
+//                System.out.println("about to set location for target ");
+//                mMapsActivity.setTargetLocation(targetLocation);
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//                System.out.println("The read failed: " + firebaseError.getMessage());
+//            }
+//        });
     }
 
         //used to set the Player's internal client manager

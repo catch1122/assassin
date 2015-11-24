@@ -37,8 +37,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationListener mLocationListener;
     private double currentPlayerLatitude;
     private double currentPlayerLongitude;
-    private Marker targetLoc;
-    private boolean mapMade;
+    private static Marker targetLoc;
+    public static boolean mapMade;
     private LocationRequest mLocationRequest;
 
     //navi bar
@@ -66,7 +66,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mDrawerList = (NavigationView)findViewById(R.id.nav_view);
         addDrawerItems();
 
-        targetLoc = null;
+//        targetLoc = null;
         currentPlayerLatitude = 34.021442;
         currentPlayerLongitude = -118.288108;
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -127,6 +127,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("target loc").snippet("snip"));
         System.out.println("creating map");
         mapMade = true;
+        System.out.println("Got through map create");
         // mMap.
     }
 
@@ -164,14 +165,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void setTargetLocation(LatLng loc) {
-        if (!mapMade) {
+        if (!this.mapMade) {
             System.out.println("map is null");
         }
-        else if (mapMade) {
+        else if (this.mapMade) {
             System.out.println("setTarget lat "+loc.latitude);
             System.out.println("setTarget long" + loc.longitude);
-                targetLoc.remove();
-                targetLoc = mMap.addMarker(new MarkerOptions().position(loc).title("target loc").snippet("snip"));
+//                targetLoc.remove();
+//                targetLoc = mMap.addMarker(new MarkerOptions().position(loc).title("target loc").snippet("snip"));
+                targetLoc.setPosition(loc);
         }
     }
 
