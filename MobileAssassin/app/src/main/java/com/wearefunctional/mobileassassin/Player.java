@@ -36,7 +36,42 @@ public class Player extends User {
         timeStamp = false;
         this.isAlive = isAlive;
         //gamesList = new Vector<String>();
-        targetName = null;
+        //targetName = null;
+
+        /*Temporary for testing purposes*/
+        targetName = displayName;
+        childFB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("Within getUserDB/onDataChange: ");
+                System.out.println("username: " + dataSnapshot.child("displayName").getValue() + "\n"
+                        + dataSnapshot.child("userName").getValue());
+                User use = new User((String) dataSnapshot.child("userName").getValue(),
+                        (String) dataSnapshot.child("displayName").getValue(),
+                        (String) dataSnapshot.child("password").getValue(),
+                        (String) dataSnapshot.child("gameName").getValue());
+                currentUser = use;
+                /*System.out.println("There are " + dataSnapshot.getChildrenCount() + " children.");
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//fkajsdfl;kjsdf
+                    User use = ds.getValue(User.class);
+                    String dname = (String) ds.child("displayName").getValue();
+                    String email = (String) ds.child("userName").getValue();
+                    String password = (String) ds.child("password").getValue();
+
+                    User use = new User();
+                    use.displayName = dname;
+                    use.userName = email;
+                    use.password = password;
+                    //System.out.println(dname);
+                    System.out.println("Display Name: " + use.getDisplayName());
+                    if (use.getDisplayName() != null && displayName != null) {
+                        if (use.getDisplayName().equals(displayName)) {
+                            currentUser = use;
+                        }
+                    }
+                }*/
+            }
     }
 
     //used to set the Player's internal client manager
