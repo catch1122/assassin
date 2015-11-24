@@ -11,6 +11,7 @@
             <!--android:title="Slideshow" />-->
         <!--<item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"-->
             <!--android:title="Tools" />-->
+        <!--fun-->
         <item android:id="@+id/kill_button" android:title="ASSASSINATE YOUR TARGET"
             android:icon="@android:drawable/ic_menu_send"/>
         <item android:id="@+id/defend_button" android:title="DEFEND YOURSELF"
