@@ -66,8 +66,7 @@ public class ClientManager{
                         + dataSnapshot.child("userName").getValue());
                 User use = new User((String) dataSnapshot.child("userName").getValue(),
                         (String) dataSnapshot.child("displayName").getValue(),
-                        (String) dataSnapshot.child("password").getValue(),
-                        (String) dataSnapshot.child("gameName").getValue());
+                        (String) dataSnapshot.child("password").getValue());
                 currentUser = use;
                 /*System.out.println("There are " + dataSnapshot.getChildrenCount() + " children.");
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -181,6 +180,15 @@ public class ClientManager{
         return currentGames;
     }
 
+    public void setUserInGame(String displayName, String gameName, int numPlayers) {
+        Firebase gameFB = selfFB.child("games").child(gameName);
+        gameFB.child("playerNames").child(Integer.toString(numPlayers)).setValue(displayName);
+
+        Firebase userFB = selfFB.child("users").child(displayName);
+        userFB.child("gameName").setValue(gameName);
+
+    }
+
     public double getLongitude(String displayName){
         User u = getUserDB(displayName);
         return u.getLongitude();
@@ -207,7 +215,6 @@ public class ClientManager{
         Firebase childFB = selfFB.child("users").child(displayName);
         childFB.child("isAlive").setValue(false);
     }
-
 
     public boolean isAlive(String displayName){
         Firebase childFB = selfFB.child("users").child(displayName);

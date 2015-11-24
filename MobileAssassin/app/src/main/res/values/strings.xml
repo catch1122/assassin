@@ -134,5 +134,5 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_guest">GuestActivity</string>
-    <string name="title_activity_join">JoinActivity</string>
+    <string name="title_activity_join">Join a Game</string>
 </resources>
