@@ -147,6 +147,18 @@ public class ClientManager{
         gamesSub.setValue(g);
     }
 
+
+
+    public void createGame(String gameName, int numPlayers, boolean isPrivate, String password, String displayName){
+        //basic creategame code
+        Firebase games = selfFB.child("games");
+        Game g = new Game(gameName, 1, isPrivate, password, displayName);
+        g.setPrivate(isPrivate);
+        g.setPassword(password);
+        Firebase gamesSub = games.child(gameName);
+        gamesSub.setValue(g);
+    }
+
     public void clearPlayers(String gameName) {
         Firebase targetGame = selfFB.child("games").child(gameName);
         targetGame.child("mPlayerNames").removeValue();
@@ -188,6 +200,20 @@ public class ClientManager{
         userFB.child("gameName").setValue(gameName);
 
     }
+
+    public boolean isGuest(String displayName) {
+        Firebase childFB = selfFB.child("users").child(displayName).child("isGuest");
+        return childFB.getKey().equalsIgnoreCase("true");
+    }
+//
+//    public Vector<User> getActivePlayers() {
+//        Vector<User> actives = new Vector<User>();
+//
+//        Firebase childFB = selfFB.child("users");
+//
+//        return actives;
+//
+//    }
 
     public double getLongitude(String displayName){
         User u = getUserDB(displayName);

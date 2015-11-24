@@ -58,6 +58,7 @@ public class GameLobbyActivity2 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 itemPlace = position;
                 itemValue = (String) listView.getItemAtPosition(itemPlace);
+                joinB.setEnabled(true);
 
             }
         });
@@ -68,7 +69,11 @@ public class GameLobbyActivity2 extends AppCompatActivity {
             value = extras.getString("displayString");
         }
 
-        // Event Handlers for Buttons
+        if (!cm.isGuest(value)) {
+            hostB.setEnabled(true);
+        }
+
+            // Event Handlers for Buttons
         View.OnClickListener hostHandler = new View.OnClickListener() {
 
             @Override
@@ -144,7 +149,6 @@ public class GameLobbyActivity2 extends AppCompatActivity {
         int numPlayers = mGames.get(itemPlace).getNumPlayers() - 1;
 
         cm.setUserInGame(displayName, gameName, numPlayers);
-
 
         return true;
     }
