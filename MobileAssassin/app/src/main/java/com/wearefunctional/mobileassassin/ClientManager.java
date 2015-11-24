@@ -147,6 +147,18 @@ public class ClientManager{
         gamesSub.setValue(g);
     }
 
+
+
+    public void createGame(String gameName, int numPlayers, boolean isPrivate, String password, String displayName){
+        //basic creategame code
+        Firebase games = selfFB.child("games");
+        Game g = new Game(gameName, 1, isPrivate, password, displayName);
+        g.setPrivate(isPrivate);
+        g.setPassword(password);
+        Firebase gamesSub = games.child(gameName);
+        gamesSub.setValue(g);
+    }
+
     public void clearPlayers(String gameName) {
         Firebase targetGame = selfFB.child("games").child(gameName);
         targetGame.child("mPlayerNames").removeValue();

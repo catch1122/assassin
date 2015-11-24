@@ -77,6 +77,7 @@ public class HostActivity extends AppCompatActivity{
     private Switch sw;
     private TextView switchStatus;
     boolean privateGame;
+    String value;
 
     public static int NO_OPTIONS=0;
 
@@ -106,6 +107,11 @@ public class HostActivity extends AppCompatActivity{
 //        } else{
 //            System.out.println("!!!!!\nYour code works!\n");
 //        }
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("displayString");
+        }
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -241,7 +247,7 @@ public class HostActivity extends AppCompatActivity{
            // mAuthTask = new UserLoginTask(email, SHAHash);
            // mAuthTask.execute((Void) null);
 
-            cm.createGame(gameName, 1, privateGame, SHAHash);
+            cm.createGame(gameName, 1, privateGame, SHAHash, value);
         }
     }
 
