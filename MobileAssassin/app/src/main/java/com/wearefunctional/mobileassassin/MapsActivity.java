@@ -47,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
 
-    private String value, gameValue;
+    public static String value, gameValue;
 
     //player reference for updating database
     static Player player;

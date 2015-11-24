@@ -25,12 +25,18 @@ public class NavigationDrawerActivity extends AppCompatActivity
     String thisName;
     private Player you;
     private String [] players;
+
+    private String value, gameValue;
+
 //    Vector<Game> playersGames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+
+        this.value = MapsActivity.value;
+        this.gameValue = MapsActivity.gameValue;
 
         Firebase.setAndroidContext(this);
 
