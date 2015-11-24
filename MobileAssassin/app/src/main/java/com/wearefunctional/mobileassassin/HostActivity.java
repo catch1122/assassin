@@ -213,7 +213,7 @@ public class HostActivity extends AppCompatActivity{
 //            focusView = mPasswordView;
 //            cancel = true;
 //        }
-        if(!privateGame && TextUtils.isEmpty(password)){
+        if(privateGame && TextUtils.isEmpty(password)){
             mPasswordView.setError("This field is required");
             focusView = mPasswordView;
             cancel = true;

@@ -141,8 +141,9 @@ public class GameLobbyActivity2 extends AppCompatActivity {
 
         String displayName = value;
         String gameName = itemValue;
+        int numPlayers = mGames.get(itemPlace).getNumPlayers();
 
-        cm.setGame(displayName, gameName);
+        cm.setUserInGame(displayName, gameName, numPlayers);
 
 
         return true;

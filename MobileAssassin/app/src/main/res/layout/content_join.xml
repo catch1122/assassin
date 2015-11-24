@@ -14,29 +14,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/textView2"
+        android:text="@string/title_activity_join"
+        android:id="@+id/joinTextView"
+        android:layout_marginTop="106dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
-        android:layout_marginTop="192dp"
-        android:layout_alignParentTop="true"
+        android:id="@+id/joinEditText"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/joinTextView"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button4"
+        android:text="@string/button_join"
+        android:id="@+id/joinbutton"
         android:layout_marginTop="70dp"
-        android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/textView2" />
+        android:layout_below="@+id/joinEditText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
