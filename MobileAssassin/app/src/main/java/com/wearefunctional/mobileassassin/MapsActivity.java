@@ -123,7 +123,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 16.0f));
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
         mMap.setMyLocationEnabled(true);
-        targetLoc = mMap.addMarker(new MarkerOptions().position(new LatLng(0,0)).title("target loc").snippet("snip"));
+        targetLoc = mMap.addMarker(new MarkerOptions().position(new LatLng(34.021494,-118.283708))
+                .title("target loc").snippet("snip"));
         // mMap.
     }
 
@@ -164,17 +165,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (mMap != null) {
             System.out.println("setTarget lat "+loc.latitude);
             System.out.println("setTarget long" + loc.longitude);
-//            if (targetLoc == null) {
-//                targetLoc = mMap.addMarker(new MarkerOptions().position(loc).title("target loc").snippet("snip"));
-//               // mMap.addMarker(new MarkerOptions().position(loc).title("Target Location"));
-//            }
-           //else {
-               // targetLoc.setPosition(loc);
                 targetLoc.remove();
-               // targetLoc.setVisible(false);
                 targetLoc = mMap.addMarker(new MarkerOptions().position(loc).title("target loc").snippet("snip"));
-               // targetLoc.setVisible(true);
-            //}
         }
     }
 
