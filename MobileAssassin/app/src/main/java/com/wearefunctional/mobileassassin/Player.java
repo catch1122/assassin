@@ -42,7 +42,7 @@ public class Player extends User {
         Intent i = new Intent(context, MapsActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
-        setTarget("Tommy");
+//        setTarget("Tommy");
 
         //gamesList = new Vector<String>();
         //targetName = null;
