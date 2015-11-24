@@ -63,7 +63,10 @@ public class GameLobbyActivity2 extends AppCompatActivity {
         });
 
 
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("displayString");
+        }
 
         // Event Handlers for Buttons
         View.OnClickListener hostHandler = new View.OnClickListener() {
