@@ -150,6 +150,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if(mMap != null){
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
             }
+            String targerName = player.getTargetName();
+
         }
     };
 

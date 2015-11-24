@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 
-import java.util.Vector;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by Matt on 11/21/15.
@@ -40,41 +44,31 @@ public class Player extends User {
 
         /*Temporary for testing purposes*/
         targetName = displayName;
+        Firebase selfFB = new Firebase("https://mobileassassin.firebaseio.com");
+        Firebase childFB = selfFB.child("users").child(targetName);
         childFB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("Within getUserDB/onDataChange: ");
-                System.out.println("username: " + dataSnapshot.child("displayName").getValue() + "\n"
-                        + dataSnapshot.child("userName").getValue());
-                User use = new User((String) dataSnapshot.child("userName").getValue(),
-                        (String) dataSnapshot.child("displayName").getValue(),
-                        (String) dataSnapshot.child("password").getValue(),
-                        (String) dataSnapshot.child("gameName").getValue());
-                currentUser = use;
-                /*System.out.println("There are " + dataSnapshot.getChildrenCount() + " children.");
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//fkajsdfl;kjsdf
-                    User use = ds.getValue(User.class);
-                    String dname = (String) ds.child("displayName").getValue();
-                    String email = (String) ds.child("userName").getValue();
-                    String password = (String) ds.child("password").getValue();
+                System.out.println("in listener");
+                double targetLat = (double) dataSnapshot.child("latitude").getValue();
+                System.out.println("target lat "+targetLat);
+                double targetLong = (double) dataSnapshot.child("longitude").getValue();
+                System.out.println("target long "+targetLong);
 
-                    User use = new User();
-                    use.displayName = dname;
-                    use.userName = email;
-                    use.password = password;
-                    //System.out.println(dname);
-                    System.out.println("Display Name: " + use.getDisplayName());
-                    if (use.getDisplayName() != null && displayName != null) {
-                        if (use.getDisplayName().equals(displayName)) {
-                            currentUser = use;
-                        }
-                    }
-                }*/
+                LatLng targetLocation = new LatLng(targetLat, targetLong);
+                System.out.println("about to set location for target ");
+                mMapsActivity.setTargetLocation(targetLocation);
+
             }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
     }
 
-    //used to set the Player's internal client manager
+        //used to set the Player's internal client manager
     public void setClientManager(ClientManager cm){
         this.cm = cm;
     }
