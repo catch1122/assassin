@@ -83,6 +83,28 @@ public class Player extends User {
     //the only way to set this
     public void setTarget(String targetName){
         this.targetName = targetName;
+        Firebase selfFB = new Firebase("https://mobileassassin.firebaseio.com");
+        Firebase childFB = selfFB.child("users").child(targetName);
+        childFB.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("in listener");
+                double targetLat = (double) dataSnapshot.child("latitude").getValue();
+                System.out.println("target lat "+targetLat);
+                double targetLong = (double) dataSnapshot.child("longitude").getValue();
+                System.out.println("target long "+targetLong);
+
+                LatLng targetLocation = new LatLng(targetLat, targetLong);
+                System.out.println("about to set location for target ");
+                mMapsActivity.setTargetLocation(targetLocation);
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
     }
 
     //returns the target name
