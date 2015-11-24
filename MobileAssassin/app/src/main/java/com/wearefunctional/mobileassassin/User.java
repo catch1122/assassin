@@ -44,11 +44,12 @@ public class User /*implements
 //        createLocationRequest();
     }
 
-    public User(String userName, String displayName, String password)
+    public User(String userName, String displayName, String password, String gameName)
     {
         this.userName = userName;
         this.displayName = displayName;
         this.password = password;
+        this.gameName = gameName;
     }
 
     /* accessor methods */
