@@ -11,15 +11,15 @@
             <!--android:title="Slideshow" />-->
         <!--<item android:id="@+id/nav_manage" android:icon="@android:drawable/ic_menu_manage"-->
             <!--android:title="Tools" />-->
-        <item android:id="@+id/kill_button" android:title="ASSASINATE YOUR TARGET"
+        <item android:id="@+id/kill_button" android:title="ASSASSINATE YOUR TARGET"
             android:icon="@android:drawable/ic_menu_send"/>
         <item android:id="@+id/defend_button" android:title="DEFEND YOURSELF"
             android:icon="@android:drawable/ic_menu_send"/>
         <item android:id="@+id/leave_button" android:title="Surrender"
             android:icon="@android:drawable/ic_menu_send"/>
+        <item android:title="Current Players" android:id="@+id/players_menu"
+        android:icon="@android:drawable/ic_menu_send"/>
     </group>
-
-    <item android:title="Current Players" android:id="@+id/players_menu">
         <menu>
             <item android:id="@+id/start_game" android:title="Begin Game"
                 android:icon="@android:drawable/ic_menu_send"/>
@@ -28,6 +28,6 @@
             <item android:id="@+id/nav_send" android:icon="@android:drawable/ic_menu_send"
                 android:title="Game 2" />
         </menu>
-    </item>
+    <!--</item>-->
 
 </menu>
