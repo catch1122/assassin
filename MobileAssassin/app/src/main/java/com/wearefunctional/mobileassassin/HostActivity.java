@@ -139,7 +139,7 @@ public class HostActivity extends AppCompatActivity{
                 try {
                     //attemptLogin();
                     createGame();
-
+                    startActivity(new Intent(HostActivity.this, MapsActivity.class));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 } catch (NoSuchAlgorithmException e) {
